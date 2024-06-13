@@ -21,15 +21,14 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+                "src/favicon.ico",
+                "src/assets"
+              
             ],
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": ["src/app/registro-estudiante/login.js"],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {

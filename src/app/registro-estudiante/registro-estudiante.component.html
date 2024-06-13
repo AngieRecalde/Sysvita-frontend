@@ -1,0 +1,50 @@
+<div class="an" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form [formGroup]="estudianteForm">
+                <h1>Registrar Estudiante</h1>
+                <span>Utilice su correo electrónico para registrarse</span>
+                <input type="text" placeholder="Nombre" class="input" formControlName="nombre" required>
+                <input type="email" placeholder="Email" class="input" formControlName="email" required>
+                <input type="password" placeholder="Password" class="input" formControlName="password" required>
+                 <!-- Aquí se utiliza formControlName="genero" para el select -->
+                <select formControlName="genero" formControlName="genero" class="form-select" required>
+                    <option disabled selected>Seleccione Género</option>
+                    <option value="femenino">Femenino</option>
+                    <option value="masculino">Masculino</option>
+                </select>
+                <input type="text" placeholder="Edad" class="input" formControlName="edad">
+                <input type="tel" placeholder="Teléfono" class="input" formControlName="telefono">
+                <input type="text" placeholder="Carrera" class="input" formControlName="carrera">
+                <input type="hidden" formControlName="fechaRegistro" formControlName="fechaRegistro">
+                <button type="submit" class="btn btn--primary" (click)="registrarEstudiante()">Registrarse</button>
+            </form>
+        </div>
+        <div class="form-container sign-in">
+            <form>
+                <h1>Iniciar Sesion Estudiante</h1>
+                <span>oIngrese su email y contraseña</span>
+                <input type="email" placeholder="Email">
+                <input type="password" placeholder="Password">
+                <a href="#">¿Te olvidaste tu contraseña?</a>
+                <button>Ingresar</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>BIENVENIDO PERFIL DE ESTUDIANTE</h1>
+                    <p>¿Ya tienes una cuenta?</p>
+                    <button class="hidden" id="login">Iniciar Sesion</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>BIENVENIDO PERFIL DE ESTUDIANTE</h1>
+                    <p>¿No cuentas con una cuenta?</p>
+                    <button class="hidden" id="register">Regístrate</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</div>
