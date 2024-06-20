@@ -22,13 +22,12 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
                 "src/favicon.ico",
-                "src/assets"
-              
+                "src/assets"              
             ],
             "styles": [
               "src/styles.css"
             ],
-            "scripts": ["src/app/registro-estudiante/login.js"],
+            "scripts": ["src/app/registro-estudiante/login.js","src/app/registro-especialista/login1.js"],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {

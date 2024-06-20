@@ -1,52 +1,48 @@
 import { Component } from '@angular/core';
-import {Estudiante} from '../model/estudiante';
+import {Especialista} from '../model/especialista';
 import {ReactiveFormsModule,FormGroup} from '@angular/forms';
-import {EstudianteService } from './../service/estudiante.service';
+import {EspecialistaService } from './../service/especialista.service';
 import {FormControl} from '@angular/forms';
 import Swal from 'sweetalert2';
 import {CommonModule} from '@angular/common';
-import { Router } from '@angular/router';
-import { inject } from '@angular/core';
 
 @Component({
-  selector: 'app-registro-estudiante',
+  selector: 'app-registro-especialista',
   standalone: true,
   imports: [ReactiveFormsModule,CommonModule],
-  templateUrl: './registro-estudiante.component.html',
-  styleUrl: './registro-estudiante.component.css'
+  templateUrl: './registro-especialista.component.html',
+  styleUrl: './registro-especialista.component.css'
 })
-export class RegistroEstudianteComponent {
-  activarBienvenidaEstudiante: string = '';
-  estudianteArray: Estudiante[] = [];
-  estudianteForm : FormGroup;
-  estudianteForm2: FormGroup;
-  constructor(private estudianteService: EstudianteService,private router: Router){
-    this.estudianteForm = new FormGroup({
+
+export class RegistroEspecialistaComponent {
+  especialistaArray: Especialista[] = [];
+  especialistaForm : FormGroup;
+  especialistaForm2: FormGroup;
+  constructor(private especialistaService: EspecialistaService){
+    this.especialistaForm = new FormGroup({
       nombre: new FormControl('',[]),
       email: new FormControl('',[]),
-      genero : new FormControl('',[]),
       password : new FormControl('',[]),
-      edad : new FormControl('',[]),
       telefono: new FormControl('',[]),
-      carrera: new FormControl('',[]),
+      especialidad: new FormControl('',[]),
       fecha_registro: new FormControl('', [])
     });
-    this.estudianteForm2 = new FormGroup({
+    this.especialistaForm2 = new FormGroup({
       email2: new FormControl('',[]),
       password2: new FormControl('',[]),
     });
   }
 
   ngOnInit():void{
-    this.getEstudiante();
+    this.getEspecialista();
   }
 
-  getEstudiante():void{
-    this.estudianteService.getEstudiantes().subscribe(
+  getEspecialista():void{
+    this.especialistaService.getEspecialista().subscribe(
       (result:any)=> {
-        console.log(this.estudianteForm.value);
+        console.log(this.especialistaForm.value);
         Swal.close();
-        this.estudianteArray = result.data;
+        this.especialistaArray = result.data;
       },(err:any)=> {
         console.log(err);
         Swal.close();
@@ -54,21 +50,20 @@ export class RegistroEstudianteComponent {
     )
   }
 
-  registrarEstudiante(): void {
+  registrarEspecialista(): void {
     const now = new Date();
     const formattedDate = `${now.getFullYear()}-${('0' + (now.getMonth() + 1)).slice(-2)}-${('0' + now.getDate()).slice(-2)} ` +
                           `${('0' + now.getHours()).slice(-2)}:${('0' + now.getMinutes()).slice(-2)}:${('0' + now.getSeconds()).slice(-2)}`;
 
     
-    this.estudianteForm.patchValue({
+    this.especialistaForm.patchValue({
       fecha_registro: formattedDate  // Formato YYYY-MM-DD HH:MM:SS
     });
   
-  
-    this.estudianteService.registrarEstudiante(this.estudianteForm.value).subscribe(
+    this.especialistaService.registrarEspecialista(this.especialistaForm.value).subscribe(
       (result: any) => {
         if (result && result.status === 201) {
-          this.estudianteForm.reset();
+          this.especialistaForm.reset();
           Swal.fire({
             icon: 'success',
             title: 'Registro Exitoso',
@@ -93,16 +88,19 @@ export class RegistroEstudianteComponent {
     );
   }
 
-  loginEstudiante(): void {
-    if (this.estudianteForm2.valid) {
-      const loginData = this.estudianteForm2.value;
+  loginEspecialista(): void {
+    if (this.especialistaForm2.valid) {
+      const loginData = this.especialistaForm2.value;
+  
+      // Crear un nuevo objeto con los nombres de campos correctos
       const loginDataFormatted = {
         email: loginData.email2,
         password: loginData.password2
       };
-
+  
       console.log('Datos de inicio de sesión formateados:', loginDataFormatted);
-
+  
+      // Mostrar un indicador de carga
       Swal.fire({
         title: 'Iniciando sesión...',
         allowOutsideClick: false,
@@ -110,26 +108,28 @@ export class RegistroEstudianteComponent {
           Swal.showLoading();
         }
       });
-
-      this.estudianteService.loginEstudiante(loginDataFormatted).subscribe(
+  
+      this.especialistaService.loginEspecialista(loginDataFormatted).subscribe(
         (result: any) => {
-          Swal.close();
-          this.estudianteForm2.reset();
+          Swal.close(); // Cerrar el indicador de carga
+          this.especialistaForm2.reset();
           Swal.fire({
             icon: 'success',
             title: 'Ingreso Exitoso',
             text: 'Se inició sesión del estudiante'
-          }).then(() => {
-            this.router.navigate(['/bienvenido-estudiante']);
           });
         },
         (err: any) => {
-          Swal.close();
+          Swal.close(); // Cerrar el indicador de carga
           console.error('Error de inicio de sesión:', err);
+  
           let errorMessage = 'Ha ocurrido un error al iniciar sesión, por favor intente nuevamente.';
+  
+          // Manejo específico del error 401 (Credenciales inválidas)
           if (err.status === 401) {
             errorMessage = 'Credenciales inválidas, verifique su email y contraseña e intente nuevamente.';
           }
+  
           Swal.fire({
             icon: 'error',
             title: 'Error al iniciar sesión',
@@ -145,5 +145,4 @@ export class RegistroEstudianteComponent {
       });
     }
   }
-  
 }

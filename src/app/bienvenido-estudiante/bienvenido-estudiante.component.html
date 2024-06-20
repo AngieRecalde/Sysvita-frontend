@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://getbootstrap.com/docs/5.3/assets/css/docs.css"
+      rel="stylesheet"
+    />
+    <title>Bienvenido Estudiante</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+      .nav-item a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body class="p-0 m-0 border-0 bd-example m-0 border-0">
+    <!-- Example Code -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">SYSVITA
+          <img
+            src="./assets/imagenes/imagen-samental.jpg"
+            alt="Logo"
+            width="60"
+            height="60"
+            class="d-inline-block align-text-top"
+          />
+        </a>
+        <div class="navbar justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item btn btn-dark">
+              <a class="nav-link btn btn-danger text-white" href="#">Cerrar Sesion</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End Example Code -->
+
+    <!-- Centering the content -->
+    <div class="mt-5">
+      <div class="row justify-content-between">
+        <!-- Sidebar with icons -->
+        <div class="col-md-3 mb-4">
+          <ul class="nav flex-column fs-4 align-items-center text-center">
+            <li class="nav-item mb-3">
+              <a class="nav-link" href="/inicio">
+                <img src="/assets/imagenes/home.svg" alt="icono-home" class="mb-2">
+                <span>Inicio</span>
+              </a>
+            </li>
+            <li class="nav-item mb-3">
+              <a class="nav-link" href="/test">
+                <img src="/assets/imagenes/search.svg" alt="icono-test" class="mb-2">
+                <span>Test</span>
+              </a>
+            </li>
+            <li class="nav-item mb-3">
+              <a class="nav-link" href="#">
+                <img src="/assets/imagenes/server.svg" alt="icono-resultados" class="mb-2">
+                <span>Resultados</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Welcome message and user image -->
+        <div class="col-md-6 text-center mb-4">
+          <h1 class="titulo-principal">BIENVENIDO, USUARIO</h1>
+          <img src="/assets/imagenes/imagen-usuario.png" alt="imagen-principal" width="300" height="300" class="img-fluid my-3">
+          <p class="mt-3 fs-3">Dale a cada día la posibilidad de ser el mejor día de tu vida</p>
+        </div>
+
+        <!-- Test section -->
+        <div class="col-md-3 mb-4 text-center">
+          <h2 class="fs-1">Test</h2>
+          <p>Seleccion el Test que desee:</p>
+          <div class="dropdown text-center">
+            <button class="btn btn-secondary dropdown-toggle mb-2 fs-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Seleccione
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/test">INDERE-RASGOS</a></li>
+              <li><a class="dropdown-item" href="#">AMARAS</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
