@@ -1,0 +1,122 @@
+<!-- Centering the content -->
+<div class="mt-5">
+  <div class="row">
+    <!-- Sidebar with icons -->
+    <div class="col-md-2 mb-4">
+      <ul class="nav flex-column fs-4 align-items-center text-center">
+        <li class="nav-item mb-3">
+          <a class="nav-link" href="/bienvenido-especialista">
+            <img src="/assets/imagenes/home.svg" alt="icono-home" class="mb-2">
+            <span>Inicio</span>
+          </a>
+        </li>
+        <li class="nav-item mb-3">
+          <a class="nav-link" href="/test">
+            <img src="/assets/imagenes/search.svg" alt="icono-test" class="mb-2">
+            <span>Test</span>
+          </a>
+        </li>
+        <li class="nav-item mb-3">
+          <a class="nav-link" href="/resultados-test">
+            <img src="/assets/imagenes/server.svg" alt="icono-resultados" class="mb-2">
+            <span>Resultados</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-9 offset-md-1">
+      <!-- Aquí va el contenido principal -->
+
+      <div class="container mt-5">
+        <div class="card mb-3">
+          <div class="card-header">Datos del Paciente</div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-8">
+                <label>Apellidos y Nombres:</label>
+                <input type="text" class="form-control" [value]="datosPaciente.apellidosYNombres" readonly>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-md-4">
+                <label>Tipo Test:</label>
+                <input type="text" class="form-control" [value]="datosPaciente.tipoTest" readonly>
+              </div>
+              <div class="col-md-4">
+                <label>Score:</label>
+                <input type="text" class="form-control" [value]="datosPaciente.score" readonly>
+              </div>
+              <div class="col-md-4">
+                <label>Nivel:</label>
+                <input type="text" class="form-control" [value]="datosPaciente.nivel" readonly>
+              </div>
+              <div class="col-md-4">
+                <label>Edad:</label>
+                <input type="text" class="form-control" [value]="datosPaciente.edad" readonly>
+              </div>
+              <div class="col-md-4">
+                <label>Email:</label>
+                <input type="text" class="form-control" [value]="datosPaciente.email" readonly>
+              </div>
+              <div class="col-md-4">
+                <label>Telefono:</label>
+                <input type="text" class="form-control" [value]="datosPaciente.telefono" readonly>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <form [formGroup]="evaluacionForm" (ngSubmit)="onSubmit()">
+          <div class="card mb-3">
+            <div class="card-header">Evaluación Especialista</div>
+            <div class="card-body">
+              <div class="mb-3">
+                <label for="diagnostico" class="form-label">Diagnóstico:</label>
+                <textarea class="form-control" id="diagnostico" rows="3" formControlName="diagnostico"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="fundamentacion" class="form-label">Fundamentación Científica:</label>
+                <textarea class="form-control" id="fundamentacion" rows="3" formControlName="fundamentacion"></textarea>
+              </div>
+            </div>
+          </div>
+      
+          <div class="card mb-3">
+            <div class="card-header">Del Tratamiento</div>
+            <div class="card-body">
+              <div class="mb-3">
+                <label for="descripcion_tratamiento" class="form-label">Tratamiento:</label>
+                <textarea class="form-control" id="descripcion_tratamiento" rows="3" formControlName="descripcion_tratamiento"></textarea>
+              </div>
+            </div>
+          </div>
+      
+          <div class="card mb-3">
+            <div class="card-header">De la comunicación</div>
+            <div class="card-body">
+              <div class="mb-3">
+                <label for="recomendacion" class="form-label">Recomendación:</label>
+                <textarea class="form-control" id="recomendacion" rows="3" formControlName="recomendacion"></textarea>
+              </div>
+            </div>
+          </div>
+      
+          <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary me-2">Registrar</button>
+            <button type="button" class="btn btn-secondary" (click)="notificarPaciente()">Notificar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+

@@ -4,17 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="test.component.css">
-    <title>TEST DE INDERE</title>
+    <title>TEST DE {{test?.nombre_test}}</title>
 </head>
 <body>
-    <h1>TEST DE DEPRESIÓN</h1>
-    <section id="fondo">
-
-    </section>
-
-    <button id="corregir">TERMINA</button>
-
-    <script src="app.js"></script>
+    <div *ngIf="!cargando && !error && test">
+        <h1>{{test.nombre_test}}</h1>
+        <p>{{test.descripcion}}</p>
+        <section id="fondo">
+          <div *ngFor="let pregunta of test.preguntas; let i = index">
+            <h3>{{ i + 1 }} - {{pregunta.texto_pregunta}}</h3>
+            <div *ngFor="let alternativa of pregunta.alternativas">
+              <input type="radio"
+                     [id]="'pregunta' + pregunta.orden + '_' + alternativa.valor"
+                     [name]="'pregunta' + pregunta.orden"
+                     [value]="alternativa.valor"
+                     [(ngModel)]="respuestas[pregunta.orden]">
+              <label [for]="'pregunta' + pregunta.orden + '_' + alternativa.valor">
+                {{alternativa.texto_opcion}}
+              </label>
+            </div>
+          </div>
+        </section>
+        <button id="corregir" (click)="enviarRespuestas()">TERMINAR</button>
+      </div>
+    
+   
 </body>
 </html>

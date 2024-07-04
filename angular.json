@@ -25,9 +25,12 @@
                 "src/assets"              
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/leaflet/dist/leaflet.css"
             ],
-            "scripts": ["src/app/registro-estudiante/login.js","src/app/registro-especialista/login1.js"],
+            "scripts": ["node_modules/leaflet/dist/leaflet.js",
+            "node_modules/leaflet.heat/dist/leaflet-heat.js",
+            "src/app/registro-ingreso/login.js"],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
@@ -95,5 +98,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "5fbb374b-4bb3-420c-83c8-bc5b1e3c6fdd"
   }
 }

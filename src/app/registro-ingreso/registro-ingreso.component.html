@@ -1,0 +1,91 @@
+<div class="an">
+  <div class="container" id="container">
+    <div class="form-container sign-up">
+      <div class="form-outer-container">
+        <div class="form-inner-container">
+      <form [formGroup]="registroForm" (ngSubmit)="onRegistro()">
+        <h1>Registrar Usuario</h1>
+              <span>Utilice su correo electrónico para registrarse</span>
+       <input type="text" placeholder="Nombres" formControlName="nombres" required>
+        <input type="text" placeholder="Apellidos" formControlName="apellidos" required>
+        <input type="email" placeholder="Email" formControlName="email" required>
+        <input type="password" placeholder="Password" formControlName="password_hash" required>
+        <input type="tel" placeholder="Teléfono" formControlName="telefono" required>
+        <input type="number" placeholder="Edad" formControlName="edad" required min="15" max="100">
+        
+        <div class="select-wrapper">
+          <select formControlName="genero" required>
+            <option value="">Seleccione Género</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Femenino">Femenino</option>
+          </select>
+        </div>
+        
+        <div class="select-wrapper">
+          <select formControlName="departamento" (change)="onDepartamentoChange()" required>
+            <option value="">Seleccione Departamento</option>
+            <option *ngFor="let dep of departamentos" [value]="dep">{{dep}}</option>
+          </select>
+        </div>
+        
+        <div class="select-wrapper">
+          <select formControlName="provincia" (change)="onProvinciaChange()" required>
+            <option value="">Seleccione Provincia</option>
+            <option *ngFor="let prov of provincias" [value]="prov">{{prov}}</option>
+          </select>
+        </div>
+        
+        <div class="select-wrapper">
+          <select formControlName="distrito" required>
+            <option value="">Seleccione Distrito</option>
+            <option *ngFor="let dist of distritos" [value]="dist">{{dist}}</option>
+          </select>
+        </div>
+        
+        <div class="select-wrapper">
+          <select formControlName="tipoUsuario" (change)="onTipoUsuarioChange()" required>
+            <option value="">Seleccione Tipo de Usuario</option>
+            <option *ngFor="let tipo of tiposUsuario" [value]="tipo">{{tipo}}</option>
+          </select>
+        </div>
+        
+        <div class="select-wrapper" *ngIf="registroForm.get('tipoUsuario')?.value === 'Estudiante'">
+          <select formControlName="carrera" required>
+            <option value="">Seleccione Carrera</option>
+            <option *ngFor="let carrera of carreras" [value]="carrera">{{carrera}}</option>
+          </select>
+        </div>
+        
+        <input *ngIf="registroForm.get('tipoUsuario')?.value === 'Especialista'" type="text" placeholder="Especialidad" formControlName="especialidad" required>
+        
+        <button type="submit" [disabled]="!registroForm.valid">Registrarse</button>
+      </form>
+    </div>
+  </div>
+    </div>
+    <div class="form-container sign-in">
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <h1>Iniciar Sesión</h1>
+        <span>Ingrese su email y contraseña</span>
+        <input type="email" placeholder="Email" formControlName="email">
+        <input type="password" placeholder="Password" formControlName="password_hash">
+         <button type="submit" [disabled]="!loginForm.valid">Ingresar</button>
+      </form>
+    </div>
+    <div class="toggle-container">
+      <div class="toggle">
+        <div class="toggle-panel toggle-left">
+          <h1>BIENVENIDO</h1>
+          <p>¿Ya tienes una cuenta?</p>
+          <button class="hidden" (click)="toggleForm('login')">Iniciar Sesión</button>
+        </div>
+        <div class="toggle-panel toggle-right">
+          <h1>BIENVENIDO</h1>
+          <p>¿No cuentas con una cuenta?</p>
+          <button class="hidden" (click)="toggleForm('registro')">Regístrate</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <script src="login.js"></script>

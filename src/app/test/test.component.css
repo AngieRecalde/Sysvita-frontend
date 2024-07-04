@@ -10,10 +10,7 @@ body{
     background: #f0ebf8;
     padding-bottom: 50px;
 }
-h1{
-    text-align: center;
-}
-#juego{
+#fondo{
     max-width: 800px;
     margin: auto;
 }
@@ -24,18 +21,7 @@ h1{
     margin-bottom: 20px;
     background: #fff;
 }
-label{
-    display: flex;
-    font-size: 22px;
-    margin-bottom: 10px;
-    cursor: pointer;
-}
-input{
-    display: inline-block;
-    width: 25px;
-    height: 25px;
-    margin-right: 10px;
-}
+
 button{
     width: fit-content;
     display: block;
@@ -51,3 +37,35 @@ button{
 .resultado{
     text-align: center;
 }
+h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 40px;
+  }
+  
+  p {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  input[type="radio"] {
+    margin-right: 10px;
+  }
+  
+  label {
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+  
+  #corregir {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+  

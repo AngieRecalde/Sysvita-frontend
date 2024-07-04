@@ -89,12 +89,14 @@
               Seleccione
             </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/test">INDERE-RASGOS</a></li>
-              <li><a class="dropdown-item" href="#">AMARAS</a></li>
+              <li *ngFor="let test of tests">
+                <a class="dropdown-item" [routerLink]="['/test', test.id]">{{test.nombre}}</a>
+              </li>
             </ul>
           </div>
         </div>
       </div>
     </div>
+    
   </body>
 </html>

@@ -1,0 +1,97 @@
+    <!-- Example Code -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">SYSVITA
+          <img
+            src="./assets/imagenes/imagen-samental.jpg"
+            alt="Logo"
+            width="60"
+            height="60"
+            class="d-inline-block align-text-top"
+          />
+        </a>
+        <div class="navbar justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+              <li class="nav-item">
+              <a class="nav-link btn btn-light m-2 text-primary" href="#" style="background-color: #E6F3FF;">Cerrar Sesión</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End Example Code -->
+    <!-- Filtros -->
+  <form [formGroup]="filterForm"  class="mb-4">
+    <div class="row g-3">
+      <div class="col-md-4">
+        <label for="fecha">Fecha</label>
+        <input id="fecha" type="date" class="form-control" formControlName="fecha">
+      </div>
+      <div class="col-md-4">
+        <label for="nombre_test">Tipo de Nivel</label>
+        <select id="nombre_test" class="form-control" formControlName="nombre_test">
+          <option value="">Todos</option>
+          <option value="STAI(ANSIEDAD)">STAI(ANSIEDAD)</option>
+          <option value="INDERE(DEPRESIÓN)">INDERE(DEPRESIÓN)</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="nombre_nivel">Nombre del Nivel</label>
+        <select id="nombre_nivel" class="form-control" formControlName="nombre_nivel">
+          <option value="">Todos</option>
+          <option value="Alto">Alto</option>
+          <option value="Medio">Medio</option>
+          <option value="Bajo">Bajo</option>
+        </select>
+      </div>
+    </div>
+  </form>
+  
+
+    <!-- resultados-test.component.html -->
+<div class="container mt-5">
+  <h2>Resultados de Tests</h2>
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Fecha</th>
+          <th>Nombre Test</th>
+          <th>Tipo</th>
+          <th>Ubigeo</th>
+          <th>Puntaje</th>
+          <th>Nivel</th>
+          <th>Color</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let resultado of filteredResultados">
+          <td>{{ resultado.email }}</td>
+          <td>{{ resultado.nombres }}</td>
+          <td>{{ resultado.apellidos }}</td>
+          <td>{{ resultado.fecha_realizacion | date:'short' }}</td>
+          <td>{{ resultado.nombre_test }}</td>
+          <td>{{ resultado.tipo_test }}</td>
+          <td>{{ resultado.ubigeo }}</td>
+          <td>{{ resultado.puntaje }}</td>
+          <td>{{ resultado.nivel }}</td>
+          <td>
+            <div class="color-circle" [style.backgroundColor]="resultado.color"></div>
+          </td>
+          <td>
+            <button class="btn btn-primary btn-sm" (click)="actualizarEvaluacion(resultado.id_resultado)">Recomendar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+   <!-- Mapa de Calor -->
+   <div id="heatmap" style="height: 500px; margin-top: 100px;"></div>
+          
+</div>
+
+
